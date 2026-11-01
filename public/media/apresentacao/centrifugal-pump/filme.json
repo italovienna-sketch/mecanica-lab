@@ -1,0 +1,27 @@
+{
+ "video": "bomba_centrifuga_desmontagem_limpo.mp4",
+ "poster": "poster_corte.jpg",
+ "captions": "bomba_centrifuga_desmontagem.vtt",
+ "seconds": 133.7,
+ "render": {
+  "engine": "CYCLES",
+  "devices": "OPTIX: NVIDIA A100-SXM4-80GB e NVIDIA L4 (duas sessões do Google Colab)",
+  "resolution": "1920x1080",
+  "samples": 96,
+  "fps": 30
+ },
+ "extras": [
+  {
+   "label": "Versão com legendas gravadas",
+   "video": "bomba_centrifuga_desmontagem.mp4"
+  },
+  {
+   "label": "Giro 360°",
+   "video": "bomba_centrifuga_giro360.mp4"
+  },
+  {
+   "label": "Vista explodida",
+   "video": "bomba_centrifuga_explodida.mp4"
+  }
+ ]
+}

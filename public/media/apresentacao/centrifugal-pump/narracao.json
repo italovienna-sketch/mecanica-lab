@@ -1,0 +1,66 @@
+{
+  "voice": "Kokoro-82M pf_dora (velocidade 0.85)",
+  "license": "Apache-2.0",
+  "shots": {
+    "01-abertura": {
+      "file": "01-abertura.mp3",
+      "seconds": 6.77
+    },
+    "02-funcionamento": {
+      "file": "02-funcionamento.mp3",
+      "seconds": 7.94
+    },
+    "03-pecas": {
+      "file": "03-pecas.mp3",
+      "seconds": 7.65
+    },
+    "04-liberacao": {
+      "file": "04-liberacao.mp3",
+      "seconds": 8.68
+    },
+    "05-parafusos": {
+      "file": "05-parafusos.mp3",
+      "seconds": 6.37
+    },
+    "06-back-pull-out": {
+      "file": "06-back-pull-out.mp3",
+      "seconds": 6.91
+    },
+    "07-junta": {
+      "file": "07-junta.mp3",
+      "seconds": 6.91
+    },
+    "08-porca": {
+      "file": "08-porca.mp3",
+      "seconds": 7.41
+    },
+    "09-rotor": {
+      "file": "09-rotor.mp3",
+      "seconds": 6.88
+    },
+    "10-selo": {
+      "file": "10-selo.mp3",
+      "seconds": 6.96
+    },
+    "11-acoplamento": {
+      "file": "11-acoplamento.mp3",
+      "seconds": 6.01
+    },
+    "12-eixo": {
+      "file": "12-eixo.mp3",
+      "seconds": 5.01
+    },
+    "13-rolamentos": {
+      "file": "13-rolamentos.mp3",
+      "seconds": 8.24
+    },
+    "14-montagem": {
+      "file": "14-montagem.mp3",
+      "seconds": 8.18
+    },
+    "15-encerramento": {
+      "file": "15-encerramento.mp3",
+      "seconds": 6.18
+    }
+  }
+}
