@@ -1,0 +1,2 @@
+/api/instructor/*  /.netlify/functions/instructor/:splat  200!
+/*  /index.html  200

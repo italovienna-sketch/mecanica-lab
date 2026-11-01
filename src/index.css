@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* As variáveis de cor dos temas claro/escuro vêm do plugin em tailwind.config.js. */
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Preferência "Texto maior" (Perfil → Acessibilidade) */
+html[data-text-size='large'] {
+  font-size: 112.5%;
+}
+
+body {
+  background: rgb(var(--ink-950));
+  color: rgb(var(--ink-100));
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-feature-settings: 'tnum' 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Foco visível e consistente para navegação por teclado */
+:focus-visible {
+  outline: 2px solid rgb(var(--accent-text));
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Movimento reduzido: preferência do sistema ou ajuste manual no Perfil */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-reduced-motion='true'] *,
+html[data-reduced-motion='true'] *::before,
+html[data-reduced-motion='true'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Barras de rolagem discretas */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ink-700));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--ink-600));
+}
+
+@layer components {
+  /* ── Ações: uma primária por área, secundária com borda, terciária (ghost) sem fundo ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn bg-accent-strong text-white hover:bg-accent-strong-hover;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-700 bg-ink-850 text-ink-100 hover:border-ink-600 hover:bg-ink-800;
+  }
+  .btn-ghost {
+    @apply btn text-ink-300 hover:bg-ink-800 hover:text-ink-100;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+  /* Botão só com ícone: sempre com aria-label */
+  .btn-icon {
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-ink-400 transition-colors hover:bg-ink-800 hover:text-ink-100 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  /* Link de texto para ações de baixa frequência */
+  .link {
+    @apply inline-flex items-center gap-1 rounded text-sm font-semibold text-accent-text underline-offset-4 hover:underline;
+  }
+
+  /* ── Superfícies ── */
+  .card {
+    @apply rounded-card border border-ink-800 bg-ink-900 shadow-card;
+  }
+  /* Cartão que é um botão ou link */
+  .card-interactive {
+    @apply card text-left transition-colors hover:border-ink-600;
+  }
+  .eyebrow {
+    @apply font-mono text-xs font-medium uppercase tracking-wider text-ink-400;
+  }
+  .section-title {
+    @apply text-base font-semibold text-ink-100;
+  }
+
+  /* ── Controle segmentado (abas compactas, alternância de modo) ── */
+  .segmented {
+    @apply inline-flex max-w-full shrink-0 overflow-x-auto rounded-lg border border-ink-700 bg-ink-900 p-0.5;
+  }
+  .segmented > button,
+  .segmented > a {
+    @apply whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium text-ink-400 transition-colors hover:text-ink-100;
+  }
+  .segmented > [aria-selected='true'],
+  .segmented > [aria-pressed='true'],
+  .segmented > [aria-checked='true'],
+  .segmented > [aria-current='page'] {
+    @apply bg-ink-700 text-ink-100;
+  }
+
+  /* ── Formulários ── */
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-ink-200;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-700 bg-ink-900 px-3 py-2.5 text-base text-ink-100 placeholder:text-ink-500 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25;
+  }
+  .field-hint {
+    @apply mt-1.5 text-sm text-ink-400;
+  }
+  .field-error {
+    @apply mt-1.5 text-sm font-medium text-rose-300;
+  }
+
+  /* ── Selos de status ── */
+  .badge {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-semibold;
+  }
+  .badge-neutral {
+    @apply badge border-ink-700 bg-ink-850 text-ink-300;
+  }
+  .badge-success {
+    @apply badge border-emerald-700/60 bg-emerald-950/40 text-emerald-300;
+  }
+  .badge-warning {
+    @apply badge border-amber-700/60 bg-amber-950/40 text-amber-200;
+  }
+  .badge-info {
+    @apply badge border-sky-700/60 bg-sky-950/40 text-sky-300;
+  }
+  .badge-accent {
+    @apply badge border-accent/40 bg-accent-soft text-accent-text;
+  }
+
+  /* ── Avisos dentro do conteúdo ── */
+  .notice {
+    @apply flex items-start gap-3 rounded-card border border-ink-800 bg-ink-850 p-4 text-sm text-ink-300;
+  }
+  .notice-warning {
+    @apply notice border-amber-700/50 bg-amber-950/20 text-amber-100;
+  }
+
+  /* ── Navegação ── */
+  .brand-mark {
+    @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent-strong font-mono text-xs font-bold text-white;
+  }
+  .nav-item {
+    @apply relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-ink-300 transition-colors hover:bg-ink-800 hover:text-ink-100;
+  }
+  .nav-item[aria-current='page'] {
+    @apply bg-ink-800 text-ink-100;
+  }
+  .nav-item[aria-current='page']::before {
+    content: '';
+    @apply absolute inset-y-1.5 left-0 w-[3px] rounded-full bg-accent;
+  }
+  .nav-item-icon {
+    @apply h-[18px] w-[18px] shrink-0 text-ink-500;
+  }
+  .nav-item:hover .nav-item-icon {
+    @apply text-ink-300;
+  }
+  .nav-item[aria-current='page'] .nav-item-icon {
+    @apply text-accent;
+  }
+  .tab-item {
+    @apply flex min-h-[56px] flex-col items-center justify-center gap-1 py-2 text-[11px] font-medium text-ink-400;
+  }
+  .tab-item[aria-current='page'],
+  .tab-item[data-active] {
+    @apply text-ink-100;
+  }
+  .tab-item[aria-current='page'] svg {
+    @apply text-accent;
+  }
+
+  /* ── Retorno ── */
+  .toast {
+    @apply flex items-start gap-3 rounded-card border border-ink-700 bg-ink-900 p-3 shadow-pop;
+  }
+  .skeleton {
+    @apply animate-pulse rounded-md bg-ink-800;
+  }
+}
+
+/* Linha do líquido no corte da bomba */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+.animate-flow-dash {
+  animation: flow-dash 1.1s linear infinite;
+}
+
+/* Carimbo da ordem de serviço concluída */
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-7deg) scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-7deg) scale(1);
+  }
+}
+
+.os-stamp {
+  transform: rotate(-7deg);
+  animation: stamp-in 0.28s ease-out both;
+}
+
+/* Gota de vazamento no teste de partida */
+@keyframes leak-drop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(34px);
+    opacity: 0;
+  }
+}
+
+.animate-leak {
+  animation: leak-drop 0.9s ease-in infinite;
+}
+
+/* Utilitários legados ainda usados pela Oficina 2D */
+.hazard-stripes {
+  background: repeating-linear-gradient(-45deg, #eab308, #eab308 12px, #111827 12px, #111827 24px);
+}
+
+.hazard-stripes-subtle {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(234, 179, 8, 0.25),
+    rgba(234, 179, 8, 0.25) 8px,
+    rgba(17, 24, 39, 0.8) 8px,
+    rgba(17, 24, 39, 0.8) 16px
+  );
+}
+
+.technical-grid {
+  background-size: 24px 24px;
+  background-image: linear-gradient(to right, rgb(var(--ink-100) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--ink-100) / 0.04) 1px, transparent 1px);
+}
+
+/* Registro impresso do Passaporte: só o bloco da jornada, sem navegação. */
+@media print {
+  body * { visibility: hidden; }
+  #registro, #registro * { visibility: visible; }
+  #registro { position: absolute; inset: 0 auto auto 0; width: 100%; border: 0; }
+  .no-print { display: none !important; }
+}

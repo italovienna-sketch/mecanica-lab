@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8590c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/><circle cx='12' cy='12' r='4'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mecânica Lab: plataforma prática para aprender manutenção mecânica industrial com aulas curtas, exercícios e laboratório 3D." />
+    <meta name="theme-color" content="#0f100e" />
+    <title>Mecânica Lab</title>
+    <script>
+      // Aplica o tema salvo (Perfil → Aparência) antes do primeiro desenho, sem "piscar".
+      try {
+        var s = JSON.parse(localStorage.getItem('mecanica_lab_settings_v1') || '{}');
+        var t = s.theme === 'dark' || s.theme === 'light' ? s.theme : s.theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-ink-950 text-ink-100 antialiased">
+    <noscript>O Mecânica Lab precisa de JavaScript ativado para funcionar.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
