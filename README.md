@@ -33,4 +33,4 @@ npm run dev
 
 ## Sobre
 
-Criado com apoio de ferramentas de IA para código, imagens e renderização.
+Protótipo desenvolvido de forma independente como parte dos estudos de manutenção industrial e computação visual do autor.
